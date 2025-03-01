@@ -79,7 +79,7 @@ const AddProduct = () => {
           <option value="grains">Grains</option>
         </select>
         <input type="file" name="image" accept="image/*" onChange={handleChange} className="w-full border p-2 rounded-lg" required />
-        <button type="submit" className="w-full bg-blue-500 text-white py-2 rounded-lg">
+        <button type="submit" className="w-full bg-green-900 text-white py-2 rounded-lg">
           Add Product
         </button>
       </form>

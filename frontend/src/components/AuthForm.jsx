@@ -43,13 +43,13 @@ const AuthForm = () => {
                 type="text"
                 name="name"
                 placeholder="Name"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
                 onChange={handleChange}
                 required
               />
               <select
                 name="role"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
                 onChange={handleChange}
               >
                 <option value="customer">Customer</option>
@@ -59,7 +59,7 @@ const AuthForm = () => {
                 type="text"
                 name="location"
                 placeholder="Location"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
                 onChange={handleChange}
                 required
               />
@@ -69,7 +69,7 @@ const AuthForm = () => {
             type="email"
             name="email"
             placeholder="Email"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
             onChange={handleChange}
             required
           />
@@ -77,13 +77,13 @@ const AuthForm = () => {
             type="password"
             name="password"
             placeholder="Password"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-800"
             onChange={handleChange}
             required
           />
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+            className="w-full bg-green-800 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition duration-300"
           >
             {isRegister ? "Register" : "Login"}
           </button>

@@ -6,7 +6,7 @@ import AuthForm from "./components/AuthForm";
 import Product from "./components/Products";
 import ProductList from "./components/ProductList";
 import AddProduct from "./components/AddProduct";
-
+import Footer from "./components/Footer";
 function App() {
   return (
     <div>
@@ -21,6 +21,7 @@ function App() {
     <Product />
     <ProductList />
     <AddProduct />
+    <Footer />
     </div>
   );
 }
