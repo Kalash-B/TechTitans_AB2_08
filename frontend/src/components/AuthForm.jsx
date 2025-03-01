@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const AuthForm = () => {
-  const [isRegister, setIsRegister] = useState(true); // Toggle between Register & Login
+  const [isRegister, setIsRegister] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,24 +14,44 @@ const AuthForm = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const url = isRegister
       ? "http://localhost:5000/api/auth/register"
       : "http://localhost:5000/api/auth/login";
 
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    const data = await response.json();
-    alert(data.message);
+      const data = await response.json(); 
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.user.id);
+        localStorage.setItem("role", data.user.role);
+
+        if (data.user.role === "farmer") {
+          localStorage.setItem("farmerId", data.user.farmerId);
+          alert(`Your Farmer ID: ${data.user.farmerId}`); 
+        }
+
+        window.location.href = "/products"; 
+      } else {
+        alert(data.message);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Try again.");
+    }
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-green-50">
       <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
         <h2 className="text-2xl font-semibold text-center text-gray-700 mb-6">
           {isRegister ? "Register" : "Login"}
