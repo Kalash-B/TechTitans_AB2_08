@@ -1,44 +1,35 @@
 const express = require("express");
-const Farmer = require("../models/farmerModel");
-
 const router = express.Router();
+const Farmer = require("../models/Farmer"); // Ensure this model exists
 
-// Get Nearby Farmers
-router.get("/nearby", async (req, res) => {
-  const { lat, lng } = req.query;
-
-  try {
-    const farmers = await Farmer.find({
-      location: {
-        $near: {
-          $geometry: { type: "Point", coordinates: [parseFloat(lng), parseFloat(lat)] },
-          $maxDistance: 5000 // 5 km
-        }
-      }
-    });
-
-    res.json(farmers);
-  } catch (error) {
-    res.status(500).json({ error: "Error fetching farmers" });
-  }
+// GET all farmers
+router.get("/", async (req, res) => {
+    try {
+        const farmers = await Farmer.find();
+        res.json(farmers);
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
 });
 
-// Add a Farmer (For Testing)
-router.post("/add", async (req, res) => {
-  const { name, lat, lng, produce } = req.body;
-
-  const newFarmer = new Farmer({
-    name,
-    location: { type: "Point", coordinates: [lng, lat] },
-    produce
-  });
-
-  try {
-    await newFarmer.save();
-    res.status(201).json({ message: "Farmer added!" });
-  } catch (error) {
-    res.status(500).json({ error: "Error adding farmer" });
-  }
+router.get("/insert", async (req, res) => {
+    try {
+        const newFarmer = new Farmer({
+          name: "John Doe",
+          location: {
+            type: "Point",
+            coordinates: [78.9629, 20.5937], // Example coordinates (longitude, latitude)
+          },
+          produce: ["Wheat", "Corn"],
+        });
+    
+        await newFarmer.save(); // Insert into database
+    
+        res.send("New Farmer Inserted Successfully!");
+      } catch (error) {
+        console.error("Error inserting data:", error);
+        res.status(500).send("Error saving data");
+      }
 });
 
 module.exports = router;
