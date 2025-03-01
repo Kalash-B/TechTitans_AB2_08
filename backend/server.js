@@ -1,40 +1,30 @@
-require("dotenv").config();
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
+const dotenv = require("dotenv");
+const connectDB = require("./config/db"); // Import DB connection
+const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
 
-const farmerRoutes = require("./routes/farmerRoutes");
-
+dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
-const MONGO_URI = process.env.MONGO_URI;
 
 // Middleware
 app.use(express.json());
 app.use(cors());
 
+// Connect to MongoDB
+connectDB();
+
+app.use(cors());
+app.use(express.json());
+app.use("/uploads", express.static("uploads")); // Serve images
+app.use("/api/products", productRoutes);
+
 // Routes
-app.use("/api/farmers", farmerRoutes);
+app.use("/api/auth", authRoutes);
 
-// MongoDB Connection
-if (!MONGO_URI) {
-  console.error("MONGO_URI is missing in .env file");
-  process.exit(1);
-}
-
-mongoose.set("strictQuery", true);
-mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("✅ MongoDB Connected");
-
-    // Start the server only after MongoDB is connected
-    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-  })
-  .catch((err) => {
-    console.error("❌ MongoDB Connection Failed:", err);
-    process.exit(1);
-  });
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`✅ Server running on port ${PORT}`);
+});
