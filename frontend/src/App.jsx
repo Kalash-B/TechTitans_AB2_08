@@ -5,13 +5,11 @@ import GoogleMapComponent from "./components/GoogleMapComponent";
 import AuthForm from "./components/AuthForm";
 import Product from "./components/Products";
 import AddProduct from "./components/AddProduct";
-<<<<<<< HEAD
 import Footer from "./components/Footer";
-=======
+import BuyProduct from "./components/BuyProduct";
 
 import "./index.css";
 
->>>>>>> dc82869 (Sordt by category, database integration)
 function App() {
   return (
     <Router>
@@ -32,22 +30,15 @@ function App() {
               }
             />
             <Route path="/products" element={<Product />} />
+            <Route path="/buy/:id" element={<BuyProduct />} />
             <Route path="/add-product" element={<AddProduct />} />
           </Routes>
         </main>
+
+        {/* Footer */}
+        <Footer />
       </div>
-<<<<<<< HEAD
-    </div>
-    <AuthForm />
-    <Home />
-    <Product />
-    <ProductList />
-    <AddProduct />
-    <Footer />
-    </div>
-=======
     </Router>
->>>>>>> dc82869 (Sordt by category, database integration)
   );
 }
 
