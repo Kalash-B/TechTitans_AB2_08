@@ -5,10 +5,7 @@ import { FaFacebook, FaTwitter, FaLinkedin, FaMapMarkerAlt, FaPhoneAlt, FaEnvelo
 const Home = () => {
   return (
     <>
-<<<<<<< HEAD
-=======
       {/* Header Section */}
->>>>>>> dc82869 (Sordt by category, database integration)
       <header className="bg-lime-300 shadow-md">
         <div className="container mx-auto px-4 py-4 flex justify-between items-center font-[Newsreader]">
           <h1 className="text-2xl font-semibold text-green-800">Farm2Home</h1>
@@ -22,29 +19,7 @@ const Home = () => {
           </nav>
         </div>
       </header>
-      
 
-<<<<<<< HEAD
-    <main className="flex flex-col items-center justify-center h-screen bg-white text-center font-[Newsreader]">
-      <h1 className="text-4xl md:text-5xl font-bold mb-4">
-        Fresh And Organic Products For You
-      </h1>
-      <p className="text-lg md:text-xl mb-8">
-        From Our Farm To Your Home Without Any Intermediaries
-      </p>
-      <button className="bg-lime-300 text-black px-6 py-3 rounded">Shop Now</button>
-    </main>
-
-
-
-      <div className="container mx-auto py-12 font-[Newsreader]">
-        <h1 className="text-4xl font-bold text-center mb-12">How it works</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {["Consumers", "LocalFarmers", "Farmers"].map((role, index) => (
-            <div key={index} className="bg-lime-100 p-8 rounded-lg shadow-lg text-center">
-              <i className={`fas fa-${role === "Consumers" ? "user" : role === "LocalFarmers" ? "store" : "tree"} fa-3x text-green-600 mb-4`}></i>
-              <h2 className="text-2xl font-semibold mb-4">{role}</h2>
-=======
       {/* Hero Section */}
       <main className="flex flex-col items-center justify-center h-screen bg-white text-center font-[Newsreader]">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">
@@ -67,7 +42,6 @@ const Home = () => {
           ].map((item, index) => (
             <div key={index} className="bg-lime-100 p-8 rounded-lg shadow-lg text-center">
               <h2 className="text-2xl font-semibold mb-4">{item.title}</h2>
->>>>>>> dc82869 (Sordt by category, database integration)
               <ul className="text-left text-gray-700">
                 {item.details.map((detail, i) => (
                   <li key={i} className="mb-2">• {detail}</li>
