@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDB = require("./config/db"); // Import DB connection
 const authRoutes = require("./routes/authRoutes");
 const productRoutes = require("./routes/productRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 dotenv.config();
 const app = express();
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static("uploads")); // Serve images
 app.use("/api/products", productRoutes);
+app.use("/api/orders", orderRoutes);
 
 // Routes
 app.use("/api/auth", authRoutes);

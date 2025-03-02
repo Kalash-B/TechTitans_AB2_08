@@ -32,6 +32,12 @@ const Product = () => {
     navigate(`/buy/${product._id}`, { state: { product } });
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    setRole(null);
+    navigate("/auth");
+  };
+
   return (
     <>
       {/* Header */}
@@ -42,9 +48,27 @@ const Product = () => {
             <a className="text-gray-700 hover:text-green-800" href="#">Shop</a>
             <a className="text-gray-700 hover:text-green-800" href="#">Product</a>
             <a className="text-gray-700 hover:text-green-800" href="#">Contact Us</a>
-            {role === "farmer" && (
-              <Link to="/add-product">
-                <button className="bg-green-800 text-white px-4 py-2 rounded">Add Product</button>
+            {role === "farmer" ? (
+              <>
+                <Link to="/add-product">
+                  <button className="bg-green-800 text-white px-4 py-2 rounded">Add Product</button>
+                </Link>
+                <button onClick={handleLogout} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">
+                  Logout
+                </button>
+              </>
+            ) : role === "customer" ? (
+              <>
+                <Link to="/dashboard">
+                  <button className="bg-green-800 text-white px-4 py-2 rounded">Nearby Farmers</button>
+                </Link>
+                <button onClick={handleLogout} className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link to="/auth">
+                <button className="bg-green-800 text-white px-4 py-2 rounded">Login / Register</button>
               </Link>
             )}
           </nav>

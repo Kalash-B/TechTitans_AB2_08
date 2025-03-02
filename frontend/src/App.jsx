@@ -7,6 +7,7 @@ import Product from "./components/Products";
 import AddProduct from "./components/AddProduct";
 import Footer from "./components/Footer";
 import BuyProduct from "./components/BuyProduct";
+import OrderTracking from "./components/OrderTracking";
 
 import "./index.css";
 
@@ -31,6 +32,7 @@ function App() {
             />
             <Route path="/products" element={<Product />} />
             <Route path="/buy/:id" element={<BuyProduct />} />
+            <Route path="/orders" element={<OrderTracking />} />
             <Route path="/add-product" element={<AddProduct />} />
           </Routes>
         </main>
